@@ -1,0 +1,18 @@
+name: Extensions WF
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  extensions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - uses: ../actions/store_license
+        with:
+          license_path: extensions/super-tables-enterprise/app/license.lic
+          license_value: ${{ secrets.TABLEAU_COMBINED_LICENSE }}
+      - name: List license file
+        run: ls -la extensions/super-tables-enterprise/app
