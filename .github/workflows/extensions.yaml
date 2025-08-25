@@ -10,9 +10,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - uses: ../actions/store_license
+      - uses: Knauf-Group/DCE-Tableau/.github/actions/store_license@extensions
         with:
           license_path: extensions/super-tables-enterprise/app/license.lic
-          license_value: ${{ secrets.TABLEAU_COMBINED_LICENSE }}
-      - name: List license file
-        run: ls -la extensions/super-tables-enterprise/app
+          license_secret: ${{ secrets.TABLEAU_COMBINED_LICENSE }}
+      - uses: Knauf-Group/DCE-Tableau/.github/actions/download_extenion@extensions
+        with:
+          extension_path: test
+          extension_destination: dest_path

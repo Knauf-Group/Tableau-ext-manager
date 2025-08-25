@@ -12,6 +12,7 @@ runs:
   using: 'composite'
   steps:
     - name: Store secret to file
+      shell: sh
       run: |
         echo "${{ inputs.license_secret }}" > "${{ inputs.license_path }}"
         chmod 600 "${{ inputs.license_path }}"

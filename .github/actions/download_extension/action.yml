@@ -1,0 +1,17 @@
+name: 'Download extension'
+description: 'Download extension'
+inputs:
+  extension_path:
+    description: "Extension path"
+    required: true
+  extension_destination:
+    description: "Extension description"
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Download extension
+      shell: sh
+      run: |
+        echo "${{ inputs.extension_path }}" 
