@@ -1,0 +1,50 @@
+name: Build Extensions
+
+on:
+  workflow_dispatch:
+  push:
+
+env:
+  super-tables-path: "extensions/super-tables-enterprise"
+  power-kpis-path: "extensions/power-kpis-enterprise"
+
+jobs:
+  super-tables:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Download license
+        uses: Knauf-Group/DCE-Tableau/.github/actions/store_license@extensions
+        with:
+          license_path: ${{ env.super-tables-path }}/app/license.lic
+          license_secret: ${{ secrets.TABLEAU_COMBINED_LICENSE }}
+      - name: Download extension binary
+        uses: Knauf-Group/DCE-Tableau/.github/actions/download_extension@extensions
+        with:
+          config_file: ${{ env.super-tables-path }}/data.json
+      # - name: Docker login to ACR
+      #   uses: azure/docker-login@v2
+      #   with:
+      #     login-server: myregistry.azurecr.io
+      #     username: ${{ secrets.ACR_USERNAME }}
+      #     password: ${{ secrets.ACR_PASSWORD }}
+      # - name: Docker Build
+      #   run: |
+      #     cd ${{ env.super-tables-path }}
+      #     docker build --platform linux/amd64 -t test:1.0 --load .
+
+  power-kpis:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Download license
+        uses: Knauf-Group/DCE-Tableau/.github/actions/store_license@extensions
+        with:
+          license_path: ${{ env.power-kpis-path }}/app/license.lic
+          license_secret: ${{ secrets.TABLEAU_COMBINED_LICENSE }}
+      - name: Download extension binary
+        uses: Knauf-Group/DCE-Tableau/.github/actions/download_extension@extensions
+        with:
+          config_file: ${{ env.power-kpis-path }}/data.json

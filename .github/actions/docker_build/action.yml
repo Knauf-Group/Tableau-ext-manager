@@ -1,0 +1,14 @@
+name: 'Build docker image'
+description: 'Build docker image'
+inputs:
+  config_file:
+    description: "Path to JSON config describing extension (contains 'url')"
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Build docker image
+      shell: sh
+      run: |
+        echo "test"

@@ -2,7 +2,7 @@
 FROM debian:bookworm-slim
 
 # Build-time arguments
-ARG BINARY_NAME=super-tables-linux
+ARG BINARY_NAME=power-kpis-linux
 ARG LICENSE_FILE=license.lic
 ARG CONFIG_FILE=config.yml
 
@@ -15,13 +15,16 @@ COPY app/${LICENSE_FILE} ./${LICENSE_FILE}
 COPY app/${CONFIG_FILE} ./${CONFIG_FILE}
 COPY app/static ./static
 
+# Copy static files
+COPY app/static ./static
+
 # Set proper permissions
 RUN chmod +x ./${BINARY_NAME} && \
     chmod 644 ./${LICENSE_FILE} ./${CONFIG_FILE} && \
     chmod -R 644 ./static
 
 # Expose the application port
-EXPOSE 8001
+EXPOSE 8002
 
 # Run the binary as web server serving static files
-CMD ["./super-tables-linux",  "--config", "config.yml" ]
+CMD ["./power-kpis-linux",  "--config", "config.yml" ]

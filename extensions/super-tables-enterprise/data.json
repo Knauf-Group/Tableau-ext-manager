@@ -1,5 +1,6 @@
 {
   "version": "5.5.0",
   "os": "linux",
-  "url": "https://github.com/Knauf-Group/DCE-Tableau/releases/download/5.5.0/super-tables-linux"
+  "url": "https://github.com/Knauf-Group/DCE-Tableau/releases/download/5.5.0/super-tables-linux",
+  "target_path": "extensions/super-tables-enterprise/app/super-tables-linux"
 }
