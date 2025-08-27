@@ -1,0 +1,25 @@
+# This configuration file will be used for building as well.
+# Configuration will be merged into the options/arguments list.
+# In production there will be a more stripped version
+
+server:
+  # Host includes port if necessary. Do not include when running on :80 or :443
+  # example: extension.company.com
+  host: localhost:8003
+
+  # Set custom base path for the extension on a domain “custom-extension”
+  # e.g., localhost:8080/custom-extension/
+  base: /
+
+  # Enable HTTPS for the webserver can be done here
+  # In case you want to use the .pfx certificate
+  # uncomment the `key` and `cert` property
+  # key: ../ssl/localhost.key
+  # cert: ../ssl/localhost.crt
+  # pfx: ../ssl/localhost.pfx
+  # passphrase: some-passphrase
+
+license:
+  # When not set, it will check for a `license.lic` or `LICENSE` file
+  # Example in current folder:
+  file: ./license.lic

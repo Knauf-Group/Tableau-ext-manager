@@ -1,0 +1,6 @@
+{
+  "version": "1.15.12",
+  "os": "linux",
+  "url": "https://github.com/Knauf-Group/DCE-Tableau/releases/download/1.15.12/hierarchy-filter-linux",
+  "target_path": "extensions/hierarchy-filter-enterprise/app/hierarchy-filter-linux"
+}
