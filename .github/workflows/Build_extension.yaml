@@ -49,16 +49,16 @@ jobs:
           url: ${{ env.url }}
           target_path: ${{ env.target_path }}
 
-      # - name: Login to ACR
-      #   uses: docker/login-action@v3
-      #   with:
-      #     registry: acrfalconnppltweu001.azurecr.io
-      #     username: acrfalconnppltweu001
-      #     password: ${{ secrets.ACR_PASSWORD }}
+      - name: Login to ACR
+        uses: docker/login-action@v3
+        with:
+          registry: acrfalconnppltweu001.azurecr.io
+          username: acrfalconnppltweu001
+          password: ${{ secrets.ACR_PASSWORD }}
 
-      # - name: Build Docker image
-      #   run: |
-      #     IMAGE_NAME=acrfalconnppltweu001.azurecr.io/inforopics/${{ matrix.extension }}
-      #     IMAGE_TAG=${{ steps.metadata.outputs.version }}
-      #     docker build -t $IMAGE_NAME:$IMAGE_TAG ${{ env.EXT_PATH }}
-      #     docker image ls
+      - name: Build Docker image
+        run: |
+          IMAGE_NAME=acrfalconnppltweu001.azurecr.io/inforopics/${{ matrix.extension }}
+          IMAGE_TAG=${{ steps.metadata.outputs.version }}
+          docker build -t $IMAGE_NAME:$IMAGE_TAG ${{ env.EXT_PATH }}
+          docker image ls
