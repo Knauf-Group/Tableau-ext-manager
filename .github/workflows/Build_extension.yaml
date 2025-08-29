@@ -47,7 +47,7 @@ jobs:
       - name: Download extension binary
         uses: Knauf-Group/DCE-Tableau/.github/actions/download_extension@extensions
         with:
-          ur: $URL
+          url: $URL
           target_path: $TARGET_PATH
 
       - name: Login to ACR
