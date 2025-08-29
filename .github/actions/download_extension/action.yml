@@ -16,5 +16,10 @@ runs:
       run: |
         echo "${{ inputs.url }}"
         echo "${{ inputs.target_path }}"
+
+        curl -L -H "Authorization: token $GITHUB_TOKEN" \
+          -o "${{ inputs.target_path }}" "${{ inputs.url }}"
+
+        ls -la "$DIRNAME"
       env:
         GITHUB_TOKEN: ${{ github.token }}
