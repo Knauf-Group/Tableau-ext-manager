@@ -58,7 +58,17 @@ jobs:
 
       - name: Build Docker image
         run: |
-          IMAGE_NAME=acrfalconnppltweu001.azurecr.io/infotopics-extensions/${{ matrix.extension }}
+          IMAGE_NAME=acrfalconnppltweu001.azurecr.io/inforopics/${{ matrix.extension }}
           IMAGE_TAG=${{ env.version }}
-          docker build -t $IMAGE_NAME:$IMAGE_TAG ${{ env.EXT_PATH }}
+
+          # Build the Docker image
+          docker build -t "$IMAGE_NAME:$IMAGE_TAG" "${{ env.EXT_PATH }}"
+
+          # Optional: tag as latest
+          docker tag "$IMAGE_NAME:$IMAGE_TAG" "$IMAGE_NAME:latest"
+
+          # List images locally
           docker image ls
+
+          # Push both tags to ACR
+          docker push "$IMAGE_NAME:$IMAGE_TAG"
