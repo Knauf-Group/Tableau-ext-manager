@@ -58,7 +58,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          IMAGE_NAME=acrfalconnppltweu001.azurecr.io/inforopics/${{ matrix.extension }}
+          IMAGE_NAME=acrfalconnppltweu001.azurecr.io/infotopics-extensions/${{ matrix.extension }}
           IMAGE_TAG=${{ env.version }}
           docker build -t $IMAGE_NAME:$IMAGE_TAG ${{ env.EXT_PATH }}
           docker image ls
