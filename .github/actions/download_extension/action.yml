@@ -1,9 +1,12 @@
 name: 'Download extension'
 description: 'Download extension'
 inputs:
-  config_file:
-    description: "Path to JSON config describing extension (contains 'url')"
+  url:
+    description: "url"
     required: true
+  target_path:
+    description: "target_path"
+    required: true 
 
 runs:
   using: 'composite'
@@ -11,14 +14,10 @@ runs:
     - name: Parse JSON and download extension
       shell: sh
       run: |
-        echo "Reading config from: $CONFIG_FILE"
-        CONFIG_FILE="${{ inputs.config_file }}"
-        DOWNLOAD_URL=$(jq -r '.url' "$CONFIG_FILE")
-        TARGET_PATH=$(jq -r '.target_path' "$CONFIG_FILE")
-        DIRNAME="$(dirname "$TARGET_PATH")"
+        DIRNAME="$(dirname "${{ inputs.target_path }}")"
 
         curl -L -H "Authorization: token $GITHUB_TOKEN" \
-        -o "$TARGET_PATH" "$DOWNLOAD_URL"
+        -o "${{ inputs.target_path }}" "${{ inputs.url }}"
 
         ls -la "$DIRNAME"
       env:
