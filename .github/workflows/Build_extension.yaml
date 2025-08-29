@@ -20,23 +20,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set paths
+      - name: Set vars
         run: |
           echo "EXT_NAME=${{ matrix.extension }}" >> $GITHUB_ENV
           echo "EXT_PATH=extensions/${{ matrix.extension }}" >> $GITHUB_ENV
 
-      - name: Read JSON and set variables
-        id: metadata
-        run: |
           VERSION=$(jq -r '.version' ${{ env.EXT_PATH }}/metadata.json)
           OS=$(jq -r '.os' ${{ env.EXT_PATH }}/metadata.json)
           URL=$(jq -r '.url' ${{ env.EXT_PATH }}/metadata.json)
           TARGET_PATH=$(jq -r '.target_path' ${{ env.EXT_PATH }}/metadata.json)
 
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "os=$OS" >> $GITHUB_OUTPUT
-          echo "url=$URL" >> $GITHUB_OUTPUT
-          echo "target_path=$TARGET_PATH" >> $GITHUB_OUTPUT
+          echo "version=$VERSION" >> $GITHUB_ENV
+          echo "os=$OS" >> $GITHUB_ENV
+          echo "url=$URL" >> $GITHUB_ENV
+          echo "target_path=$TARGET_PATH" >> $GITHUB_ENV
 
       - name: Download license
         uses: Knauf-Group/DCE-Tableau/.github/actions/store_license@extensions
@@ -47,19 +44,19 @@ jobs:
       - name: Download extension binary
         uses: Knauf-Group/DCE-Tableau/.github/actions/download_extension@extensions
         with:
-          url: $URL
-          target_path: $TARGET_PATH
+          url: ${{ env.url }}
+          target_path: ${{ env.target_path }}
 
-      - name: Login to ACR
-        uses: docker/login-action@v3
-        with:
-          registry: acrfalconnppltweu001.azurecr.io
-          username: acrfalconnppltweu001
-          password: ${{ secrets.ACR_PASSWORD }}
+      # - name: Login to ACR
+      #   uses: docker/login-action@v3
+      #   with:
+      #     registry: acrfalconnppltweu001.azurecr.io
+      #     username: acrfalconnppltweu001
+      #     password: ${{ secrets.ACR_PASSWORD }}
 
-      - name: Build Docker image
-        run: |
-          IMAGE_NAME=acrfalconnppltweu001.azurecr.io/inforopics/${{ matrix.extension }}
-          IMAGE_TAG=${{ steps.metadata.outputs.version }}
-          docker build -t $IMAGE_NAME:$IMAGE_TAG ${{ env.EXT_PATH }}
-          docker image ls
+      # - name: Build Docker image
+      #   run: |
+      #     IMAGE_NAME=acrfalconnppltweu001.azurecr.io/inforopics/${{ matrix.extension }}
+      #     IMAGE_TAG=${{ steps.metadata.outputs.version }}
+      #     docker build -t $IMAGE_NAME:$IMAGE_TAG ${{ env.EXT_PATH }}
+      #     docker image ls
