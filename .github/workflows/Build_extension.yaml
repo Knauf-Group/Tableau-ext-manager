@@ -22,14 +22,16 @@ jobs:
 
       - name: Set vars
         run: |
-          echo "EXT_NAME=${{ matrix.extension }}" >> $GITHUB_ENV
-          echo "EXT_PATH=extensions/${{ matrix.extension }}" >> $GITHUB_ENV
+          EXT_NAME="${{ matrix.extension }}"
+          EXT_PATH="extensions/${{ matrix.extension }}"
 
-          VERSION=$(jq -r '.version' ${{ env.EXT_PATH }}/metadata.json)
-          OS=$(jq -r '.os' ${{ env.EXT_PATH }}/metadata.json)
-          URL=$(jq -r '.url' ${{ env.EXT_PATH }}/metadata.json)
-          TARGET_PATH=$(jq -r '.target_path' ${{ env.EXT_PATH }}/metadata.json)
+          VERSION=$(jq -r '.version' "$EXT_PATH/metadata.json")
+          OS=$(jq -r '.os' "$EXT_PATH/metadata.json")
+          URL=$(jq -r '.url' "$EXT_PATH/metadata.json")
+          TARGET_PATH=$(jq -r '.target_path' "$EXT_PATH/metadata.json")
 
+          echo "EXT_NAME=$EXT_NAME" >> $GITHUB_ENV
+          echo "EXT_PATH=$EXT_PATH" >> $GITHUB_ENV
           echo "version=$VERSION" >> $GITHUB_ENV
           echo "os=$OS" >> $GITHUB_ENV
           echo "url=$URL" >> $GITHUB_ENV
