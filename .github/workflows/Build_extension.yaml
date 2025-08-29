@@ -9,7 +9,7 @@ env:
     super-tables-enterprise
     power-kpis-enterprise
     hierarchy-filter-enterprise
-  acr: ${{ env.acr }}
+  acr: acrfalconnppltweu001
 
 jobs:
   build:
