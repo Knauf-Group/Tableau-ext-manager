@@ -63,7 +63,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t "$IMAGE_NAME:$IMAGE_TAG" "$EXT_PATH"
+          docker build --platform linux/amd64 -t "$IMAGE_NAME:$IMAGE_TAG" "$EXT_PATH"
           docker image ls
 
       - name: Run Trivy vulnerability scanner
