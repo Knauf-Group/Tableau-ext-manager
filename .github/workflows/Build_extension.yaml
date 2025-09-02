@@ -68,13 +68,13 @@ jobs:
           # List images locally
           docker image ls
 
-          # Push both tags to ACR
-          docker push "$IMAGE_NAME:$IMAGE_TAG"
+          # # Push both tags to ACR
+          # docker push "$IMAGE_NAME:$IMAGE_TAG"
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.28.0
         with:
-          image-ref: ${{ env.version }}
+          image-ref: ${{ env.acr }}.azurecr.io/infotopics/extensions/${{ matrix.extension }}:${{ env.version }}
           format: 'table'
           exit-code: '0'
           ignore-unfixed: true
