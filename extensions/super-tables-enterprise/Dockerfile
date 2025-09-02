@@ -1,5 +1,5 @@
-# Use a minimal Debian base image
-FROM debian:bookworm-slim
+# Use a minimal Debian base image (amd64 variant)
+FROM --platform=linux/amd64 debian:bookworm-slim
 
 # Build-time arguments
 ARG BINARY_NAME=super-tables-linux
@@ -15,7 +15,7 @@ COPY app/static ./static
 
 # Set proper permissions
 RUN chmod +x ./${BINARY_NAME} && \
-    chmod 644 ./${LICENSE_FILE} ./${CONFIG_FILE} && \
+    chmod 644 ./${LICENSE_FILE} && \
     chmod -R 644 ./static
 
 # Expose the application port
