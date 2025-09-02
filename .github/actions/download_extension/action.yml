@@ -6,7 +6,10 @@ inputs:
     required: true
   target_path:
     description: "target_path"
-    required: true 
+    required: true
+  token:
+    description: "GitHub token"
+    required: true
 
 runs:
   using: 'composite'
@@ -14,7 +17,7 @@ runs:
     - name: Parse JSON and download extension
       shell: sh
       run: |
-        curl -L -H "Authorization: token ${{ secrets.GH_PAT }}" \
+        curl -L -H "Authorization: token ${{ inputs.token }}" \
           -o "${{ inputs.target_path }}" "${{ inputs.url }}"
 
         chmod +x "${{ inputs.target_path }}"

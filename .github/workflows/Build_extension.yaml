@@ -53,6 +53,7 @@ jobs:
         with:
           url: ${{ env.url }}
           target_path: ${{ env.target_path }}
+          token: ${{ secrets.GH_PAT }}
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
