@@ -1,5 +1,5 @@
 # Use a minimal Debian base image (amd64 variant)
-FROM --platform=linux/amd64 debian:bookworm-slim
+FROM --platform=$BUILDPLATFORM debian:bookworm-slim
 
 # Build-time arguments
 ARG BINARY_NAME=super-tables-linux
