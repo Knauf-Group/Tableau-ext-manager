@@ -30,6 +30,8 @@ jobs:
           OS=$(jq -r '.os' "$EXT_PATH/metadata.json")
           URL=$(jq -r '.url' "$EXT_PATH/metadata.json")
           TARGET_PATH=$(jq -r '.target_path' "$EXT_PATH/metadata.json")
+          IMAGE_NAME="${{ env.acr }}.azurecr.io/infotopics/extensions/${{ matrix.extension }}"
+          IMAGE_TAG="$VERSION"
 
           echo "EXT_NAME=$EXT_NAME" >> $GITHUB_ENV
           echo "EXT_PATH=$EXT_PATH" >> $GITHUB_ENV
@@ -37,6 +39,8 @@ jobs:
           echo "os=$OS" >> $GITHUB_ENV
           echo "url=$URL" >> $GITHUB_ENV
           echo "target_path=$TARGET_PATH" >> $GITHUB_ENV
+          echo "IMAGE_NAME=$IMAGE_NAME" >> $GITHUB_ENV
+          echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
 
       - name: Download license
         uses: Knauf-Group/DCE-Tableau/.github/actions/store_license@extensions
@@ -59,24 +63,19 @@ jobs:
 
       - name: Build Docker image
         run: |
-          IMAGE_NAME=${{ env.acr }}.azurecr.io/infotopics/extensions/${{ matrix.extension }}
-          IMAGE_TAG=${{ env.version }}
-
-          # Build the Docker image
-          docker build -t "$IMAGE_NAME:$IMAGE_TAG" "${{ env.EXT_PATH }}"
-
-          # List images locally
+          docker build -t "$IMAGE_NAME:$IMAGE_TAG" "$EXT_PATH"
           docker image ls
-
-          # # Push both tags to ACR
-          # docker push "$IMAGE_NAME:$IMAGE_TAG"
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.28.0
         with:
-          image-ref: ${{ env.acr }}.azurecr.io/infotopics/extensions/${{ matrix.extension }}:${{ env.version }}
+          image-ref: ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
           format: 'table'
           exit-code: '0'
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
+
+      - name: Push Docker image
+        run: |
+          docker push "$IMAGE_NAME:$IMAGE_TAG"
