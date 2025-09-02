@@ -14,9 +14,9 @@ runs:
     - name: Parse JSON and download extension
       shell: sh
       run: |
-        curl -L -H "Authorization: token $GITHUB_TOKEN" \
+        curl -L -H "Authorization: token ${{ secrets.GH_PAT }}" \
           -o "${{ inputs.target_path }}" "${{ inputs.url }}"
 
+        chmod +x "${{ inputs.target_path }}"
+
         ls -la "$(dirname "${{ inputs.target_path }}")"
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
