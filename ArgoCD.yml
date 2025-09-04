@@ -1,10 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: Tableau-extensions
+  name: tableau-extensions
 spec:
   destination:
-    namespace: ''
+    namespace: infotopics
     server: https://kubernetes.default.svc
   source:
     path: kustomize/overlays/non-prod
@@ -17,4 +17,4 @@ spec:
       prune: false
       selfHeal: true
     syncOptions:
-      - CreateNamespace=true
+      - CreateNamespace=false

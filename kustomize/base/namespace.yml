@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   labels:
     azure-key-vault-env-injection: disabled
-  name: daas-infotopic-ext
+  name: infotopics

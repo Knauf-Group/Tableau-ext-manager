@@ -28,10 +28,10 @@ patches:
     patch: |-
       - op: replace
         path: /spec/rules/0/host
-        value: np.developer.knaufgroup.com
+        value: np.infotopicsextension.knaufgroup.com
       - op: replace
         path: /spec/tls/0/hosts/0
-        value: np.developer.knaufgroup.com
+        value: np.infotopicsextension.knaufgroup.com
   - target:
       kind: Ingress
       name: daas-infotopicss-extensions-public-ingress

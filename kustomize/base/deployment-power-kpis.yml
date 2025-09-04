@@ -22,8 +22,6 @@ spec:
           - name: config-volume
             mountPath: /app/config.yml
             subPath: config.yml
-      imagePullSecrets:
-        - name: acr-secret
       volumes:
         - name: config-volume
           configMap:
