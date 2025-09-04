@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: daas-infortopics-ext-power-kpis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: daas-infortopics-power-kpis
+  template:
+    metadata:
+      labels:
+        app: daas-infortopics-power-kpis
+    spec:
+      containers:
+      - image: acrfalconnppltweu001.azurecr.io/infortopicss/extensions/power-kpis-enterprise:3.5.1
+        imagePullPolicy: Always
+        name: daas-infortopics-power-kpis
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - name: config-volume
+            mountPath: /app/config.yml
+            subPath: config.yml
+      imagePullSecrets:
+        - name: acr-secret
+      volumes:
+        - name: config-volume
+          configMap:
+            name: daas-infortopics-cm
+            items:
+              - key: config.yml
+                path: config.yml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: daas-infortopics-ext-power-kpis-svc
+spec:
+  selector:
+    app: daas-infortopics-power-kpis
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP

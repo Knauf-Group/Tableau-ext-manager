@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: daas-infotopics-ext-super-tables
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: daas-infotopics-super-tables
+  template:
+    metadata:
+      labels:
+        app: daas-infotopics-super-tables
+    spec:
+      containers:
+      - image: acrfalconnppltweu001.azurecr.io/infotopicss/extensions/super-tables-enterprise:5.5.0
+        imagePullPolicy: Always
+        name: daas-infotopics-super-tables
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - name: config-volume
+            mountPath: /app/config.yml
+            subPath: config.yml
+      imagePullSecrets:
+        - name: acr-secret
+      volumes:
+        - name: config-volume
+          configMap:
+            name: daas-infotopics-cm
+            items:
+              - key: config.yml
+                path: config.yml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: daas-infotopics-ext-super-tables-svc
+spec:
+  selector:
+    app: daas-infotopics-super-tables
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
