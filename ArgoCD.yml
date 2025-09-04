@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: Tableau-extensions
+spec:
+  destination:
+    namespace: ''
+    server: https://kubernetes.default.svc
+  source:
+    path: kustomize/overlays/non-prod
+    repoURL: git@github.com:Knauf-Group/DCE-Tableau.git
+    targetRevision: extensions
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
