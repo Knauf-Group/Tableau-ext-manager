@@ -22,7 +22,7 @@ spec:
           service:
             name: daas-infotopics-ext-super-tables-svc
             port:
-              number: 80
+              number: 8085
         path: /super-tables
         pathType: Prefix
       - backend:
