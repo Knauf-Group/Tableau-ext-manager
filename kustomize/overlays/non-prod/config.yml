@@ -2,7 +2,7 @@ server:
   # Host includes port if necessary. Do not include when running on :80 or :443
   # example: extension.company.com
   # host: np.infotopicsextension.knaufgroup.com
-  host: np.falcon-security.knaufgroup.com
+  host: 0.0.0.0:80
 
   # Set custom base path for the extension on a domain “custom-extension” e.g., localhost:8080/custom-extension/
   base: /

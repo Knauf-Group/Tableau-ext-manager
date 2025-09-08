@@ -5,6 +5,7 @@ resources:
   - ../../base
 
 namespace: infotopics
+# namespace: default
 
 configMapGenerator:
   - name: daas-infotopic-cm
