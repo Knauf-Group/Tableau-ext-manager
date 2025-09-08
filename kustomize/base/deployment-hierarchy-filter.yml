@@ -25,7 +25,7 @@ spec:
       volumes:
         - name: config-volume
           configMap:
-            name: daas-infotopic-cm
+            name: daas-infotopic-cm-hierarchy-filter
             items:
               - key: config.yml
                 path: config.yml

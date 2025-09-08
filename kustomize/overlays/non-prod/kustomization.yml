@@ -8,9 +8,15 @@ namespace: infotopics
 # namespace: default
 
 configMapGenerator:
-  - name: daas-infotopic-cm
+  - name: daas-infotopic-cm-super-tables
     files:
-      - config.yml
+      - config-map-super-tables
+  - name: daas-infotopic-cm-power-kpis
+    files:
+      - config-map-power-kpis
+  - name: daas-infotopic-cm-hierarchy-filter
+    files:
+      - config-map-hierarchy-filter
 generatorOptions:
   disableNameSuffixHash: true 
 

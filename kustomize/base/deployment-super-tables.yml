@@ -27,7 +27,7 @@ spec:
       volumes:
         - name: config-volume
           configMap:
-            name: daas-infotopic-cm
+            name: daas-infotopic-cm-super-tables
             items:
               - key: config.yml
                 path: config.yml
