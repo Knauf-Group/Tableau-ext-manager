@@ -5,7 +5,7 @@ server:
   host: np.falcon-security.knaufgroup.com
 
   # Set custom base path for the extension on a domain “custom-extension” e.g., localhost:8080/custom-extension/
-  base: /
+  base: /super-tables
 
 license:
   # When not set, it will check for a `license.lic` or `LICENSE` file
