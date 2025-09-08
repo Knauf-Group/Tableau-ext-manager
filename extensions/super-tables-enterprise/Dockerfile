@@ -8,6 +8,13 @@ ARG LICENSE_FILE=license.lic
 # Set working directory
 WORKDIR /app
 
+# Install required tools (file, wget), then clean up
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        wget \
+        file && \
+    rm -rf /var/lib/apt/lists/*
+
 # Copy application files
 COPY app/${BINARY_NAME} ./${BINARY_NAME}
 COPY app/${LICENSE_FILE} ./${LICENSE_FILE}
