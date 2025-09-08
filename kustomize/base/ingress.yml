@@ -66,21 +66,21 @@ spec:
           service:
             name: daas-infotopics-ext-super-tables-svc
             port:
-              number: 80
+              number: 8085
         path: /super-tables
         pathType: Prefix
       - backend:
           service:
             name: daas-infortopics-ext-power-kpis-svc
             port:
-              number: 80
+              number: 8086
         path: /power-kpis
         pathType: Prefix
       - backend:
           service:
             name: daas-infotopic-ext-hierarchy-filter-svc
             port:
-              number: 80
+              number: 8087
         path: /hierarchy-filter
         pathType: Prefix
   tls:
