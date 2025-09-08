@@ -1,6 +1,0 @@
-server:
-  host: 0.0.0.0:80
-  base: /super-tables
-
-license:
-  file: ./license.lic
