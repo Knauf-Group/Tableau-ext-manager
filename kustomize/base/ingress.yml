@@ -42,7 +42,7 @@ spec:
   tls:
   - hosts:
     - 
-    secretName: developer-server-tls
+    secretName: infotopics-server-tls
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -86,4 +86,4 @@ spec:
   tls:
   - hosts:
     - 
-    secretName: developer-server-tls
+    secretName: infotopics-server-tls
