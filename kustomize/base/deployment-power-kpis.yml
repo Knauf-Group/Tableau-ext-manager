@@ -39,6 +39,6 @@ spec:
     app: daas-infortopics-power-kpis
   ports:
     - protocol: TCP
-      port: 8085
+      port: 80
       targetPort: 80
   type: ClusterIP
