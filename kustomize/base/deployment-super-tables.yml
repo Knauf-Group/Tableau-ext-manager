@@ -14,6 +14,8 @@ spec:
     spec:
       containers:
       - image: acrfalconnppltweu001.azurecr.io/infotopics/extensions/super-tables-enterprise:5.5.0
+        command: ["/bin/sh"]
+        args: ["-c", "sleep 3600"]
         imagePullPolicy: Always
         name: daas-infotopics-super-tables
         ports:
