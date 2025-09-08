@@ -10,13 +10,13 @@ namespace: infotopics
 configMapGenerator:
   - name: daas-infotopic-cm-super-tables
     files:
-      - config-map-super-tables.yml
+      - config.yml=config-map-super-tables.yml
   - name: daas-infotopic-cm-power-kpis
     files:
-      - config-map-power-kpis.yml
+      - config.yml=config-map-power-kpis.yml
   - name: daas-infotopic-cm-hierarchy-filter
     files:
-      - config-map-hierarchy-filter.yml
+      - config.yml=config-map-hierarchy-filter.yml
 generatorOptions:
   disableNameSuffixHash: true 
 
