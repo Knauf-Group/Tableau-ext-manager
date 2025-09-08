@@ -13,7 +13,7 @@ spec:
         app: daas-infortopics-power-kpis
     spec:
       containers:
-      - image: acrfalconnppltweu001.azurecr.io/infortopicss/extensions/power-kpis-enterprise:3.5.1
+      - image: acrfalconnppltweu001.azurecr.io/infotopics/extensions/power-kpis-enterprise:3.5.1
         imagePullPolicy: Always
         name: daas-infortopics-power-kpis
         ports:

@@ -13,7 +13,7 @@ spec:
         app: daas-infotopics-super-tables
     spec:
       containers:
-      - image: acrfalconnppltweu001.azurecr.io/infotopicss/extensions/super-tables-enterprise:5.5.0
+      - image: acrfalconnppltweu001.azurecr.io/infotopics/extensions/super-tables-enterprise:5.5.0
         imagePullPolicy: Always
         name: daas-infotopics-super-tables
         ports:
