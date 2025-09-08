@@ -39,6 +39,6 @@ spec:
     app: daas-infotopic-hierarchy-filter
   ports:
     - protocol: TCP
-      port: 8087
+      port: 8085
       targetPort: 80
   type: ClusterIP
