@@ -23,7 +23,7 @@ spec:
             name: daas-infotopics-ext-super-tables-svc
             port:
               number: 80
-        path: /super-tables(/|$)(.*)
+        path: /super-tables
         pathType: Prefix
       # - backend:
       #     service:
