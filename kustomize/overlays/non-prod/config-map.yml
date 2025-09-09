@@ -1,6 +1,6 @@
 server:
-  host: 0.0.0.0:80
-  base: /
+  host: np.falcon-security.knaufgroup.com
+  base: /super-tables
 
 license:
   file: ./license.lic
