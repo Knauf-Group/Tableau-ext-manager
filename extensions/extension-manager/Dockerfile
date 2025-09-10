@@ -23,5 +23,8 @@ RUN chmod +x ./${BINARY_NAME}
 # Expose the application port
 EXPOSE 38209
 
-# Run the binary as web server serving static files
-CMD ["sh", "-c", "./aft-extensions-manager-linux"]
+# Use tini as PID 1
+ENTRYPOINT ["/usr/bin/tini", "--"]
+
+# Run the binary as main process
+CMD ["./aft-extensions-manager-linux"]
