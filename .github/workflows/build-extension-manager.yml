@@ -4,7 +4,8 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - "extensions/extension-manager"
+      - "extensions/extension-manager/**"
+      - ".github/workflows/build-extension-manager.yml"
 
 env:
   acr: acrfalconnppltweu001
