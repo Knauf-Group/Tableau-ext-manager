@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        extension: [super-tables-enterprise, power-kpis-enterprise, hierarchy-filter-enterprise, extension-manager]
+        extension: [super-tables-enterprise, power-kpis-enterprise, hierarchy-filter-enterprise]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
