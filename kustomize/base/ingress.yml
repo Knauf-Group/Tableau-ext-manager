@@ -6,7 +6,7 @@ metadata:
     appgw.ingress.kubernetes.io/backend-protocol: http
     appgw.ingress.kubernetes.io/ssl-redirect: "true"
     appgw.ingress.kubernetes.io/use-private-ip: "true"
-    appgw.ingress.kubernetes.io/backend-path-prefix: /
+    # appgw.ingress.kubernetes.io/backend-path-prefix: /
     appgw.ingress.kubernetes.io/waf-policy-for-path: /subscriptions/9e739869-eb3e-483b-83fb-88b4eeea9c08/resourceGroups/rg-falcon-np-plt-weu-001/providers/Microsoft.Network/applicationGatewayWebApplicationFirewallPolicies/waf-falcon-np-plt-weu-001
     cert-manager.io/acme-challenge-type: http01
     cert-manager.io/cluster-issuer: letsencrypt-prod
@@ -35,7 +35,7 @@ metadata:
   annotations:
     appgw.ingress.kubernetes.io/backend-protocol: http
     appgw.ingress.kubernetes.io/ssl-redirect: "true"
-    appgw.ingress.kubernetes.io/backend-path-prefix: /
+    # appgw.ingress.kubernetes.io/backend-path-prefix: /
     appgw.ingress.kubernetes.io/waf-policy-for-path: /subscriptions/9e739869-eb3e-483b-83fb-88b4eeea9c08/resourceGroups/rg-falcon-np-plt-weu-001/providers/Microsoft.Network/applicationGatewayWebApplicationFirewallPolicies/waf-falcon-np-plt-weu-001
     cert-manager.io/acme-challenge-type: http01
     cert-manager.io/cluster-issuer: letsencrypt-prod
@@ -57,3 +57,21 @@ spec:
   - hosts:
     - 
     secretName: infotopics-server-tls
+---
+apiVersion: appgw.ingress.azure.io/v1
+kind: IngressExtension
+metadata:
+  name: daas-infotopicss-extensions-ingress-extension
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /myextmanagerapp
+        rewrite:
+          ruleSequence: 100
+          rewriteRules:
+          - name: rewrite-myapp
+            action:
+              url:
+                path:
+                  replacePrefixMatch: "/"
