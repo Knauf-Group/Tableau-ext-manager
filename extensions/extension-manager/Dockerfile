@@ -13,10 +13,6 @@ WORKDIR /app
 COPY aft-extensions-manager-linux ./aft-extensions-manager-linux
 RUN chmod +x ./aft-extensions-manager-linux
 
-# Create folder for config and copy configuration.yaml
-RUN mkdir -p "/app/$CONFIG_DIR"
-COPY configuration.yaml "/app/$CONFIG_DIR/configuration.yaml"
-
 # Ensure everything is owned by non-root user
 RUN chown -R aftuser:aftuser /app
 
