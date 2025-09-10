@@ -7,8 +7,6 @@ on:
       - "extensions/extension-manager"
 
 env:
-  extensions: |
-    extension-manager
   acr: acrfalconnppltweu001
 
 jobs:

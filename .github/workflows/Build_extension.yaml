@@ -4,7 +4,9 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - "extensions/**"
+      - "extensions/hierarchy-filter-enterprise"
+      - "extensions/power-kpis-enterprise"
+      - "extensions/super-tables-enterprise"
 
 env:
   extensions: |
