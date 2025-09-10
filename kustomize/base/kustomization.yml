@@ -4,4 +4,4 @@ resources:
 # - deployment-super-tables.yml
 # - deployment-power-kpis.yml
 # - deployment-hierarchy-filter.yml
-# - ingress.yml
+- ingress.yml
