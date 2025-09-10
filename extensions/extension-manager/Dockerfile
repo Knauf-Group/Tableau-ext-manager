@@ -1,30 +1,26 @@
-# Use a minimal Debian base image (amd64 variant)
-FROM --platform=$BUILDPLATFORM debian:bookworm-slim
+FROM ubuntu:20.04
 
-# Build-time arguments
-ARG BINARY_NAME=aft-extensions-manager-linux
+# Create non-root user
+RUN useradd -m -s /bin/bash aftuser
+
+# Build-time argument for config folder
+ARG CONFIG_DIR="AFT Extension Manager"
 
 # Set working directory
 WORKDIR /app
 
-# Install required tools (file, wget), then clean up
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        wget \
-        file && \
-    rm -rf /var/lib/apt/lists/*
+# Copy the binary and make it executable
+COPY aft-extensions-manager-linux ./aft-extensions-manager-linux
+RUN chmod +x ./aft-extensions-manager-linux
 
-# Copy application files
-COPY ${BINARY_NAME} ./${BINARY_NAME}
+# Ensure everything is owned by non-root user
+RUN chown -R aftuser:aftuser /app
 
-# Set proper permissions
-RUN chmod +x ./${BINARY_NAME}
+# Switch to non-root user
+USER aftuser
 
-# Expose the application port
-EXPOSE 38209
+# Expose port
+EXPOSE 80
 
-# Use tini as PID 1
-ENTRYPOINT ["/usr/bin/tini", "--"]
-
-# Run the binary as main process
+# Start the binary
 CMD ["./aft-extensions-manager-linux"]
