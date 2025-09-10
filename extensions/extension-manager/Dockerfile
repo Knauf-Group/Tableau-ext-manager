@@ -24,4 +24,4 @@ RUN chmod +x ./${BINARY_NAME}
 EXPOSE 80
 
 # Run the binary as web server serving static files
-CMD ["./aft-extensions-manager-linux"]
+CMD ["sh", "-c", "./aft-extensions-manager-linux"]
