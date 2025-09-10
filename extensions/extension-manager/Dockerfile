@@ -18,7 +18,7 @@ RUN apt-get update && \
 COPY ${BINARY_NAME} ./${BINARY_NAME}
 
 # Set proper permissions
-RUN chmod +x ./${BINARY_NAME} && 
+RUN chmod +x ./${BINARY_NAME}
 
 # Expose the application port
 EXPOSE 80
