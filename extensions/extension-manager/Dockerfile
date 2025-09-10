@@ -21,7 +21,7 @@ COPY ${BINARY_NAME} ./${BINARY_NAME}
 RUN chmod +x ./${BINARY_NAME}
 
 # Expose the application port
-EXPOSE 80
+EXPOSE 38209
 
 # Run the binary as web server serving static files
 CMD ["sh", "-c", "./aft-extensions-manager-linux"]
