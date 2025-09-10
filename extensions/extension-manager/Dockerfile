@@ -20,7 +20,7 @@ RUN chown -R aftuser:aftuser /app
 USER aftuser
 
 # Expose port
-EXPOSE 80
+EXPOSE 45809
 
 # Start the binary
 CMD ["./aft-extensions-manager-linux"]
