@@ -1,0 +1,86 @@
+name: Build Extensions
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "extensions/extensiom-manager"
+
+env:
+  extensions: |
+    super-tables-enterprise
+    power-kpis-enterprise
+    hierarchy-filter-enterprise
+  acr: acrfalconnppltweu001
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        extension: [extension-manager]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set vars
+        run: |
+          EXT_NAME="${{ matrix.extension }}"
+          EXT_PATH="extensions/${{ matrix.extension }}"
+
+          VERSION=$(jq -r '.version' "$EXT_PATH/metadata.json")
+          OS=$(jq -r '.os' "$EXT_PATH/metadata.json")
+          URL=$(jq -r '.url' "$EXT_PATH/metadata.json")
+          TARGET_PATH=$(jq -r '.target_path' "$EXT_PATH/metadata.json")
+          IMAGE_NAME="${{ env.acr }}.azurecr.io/infotopics/extensions/${{ matrix.extension }}"
+          IMAGE_TAG="$VERSION"
+
+          echo "EXT_NAME=$EXT_NAME" >> $GITHUB_ENV
+          echo "EXT_PATH=$EXT_PATH" >> $GITHUB_ENV
+          echo "version=$VERSION" >> $GITHUB_ENV
+          echo "os=$OS" >> $GITHUB_ENV
+          echo "url=$URL" >> $GITHUB_ENV
+          echo "target_path=$TARGET_PATH" >> $GITHUB_ENV
+          echo "IMAGE_NAME=$IMAGE_NAME" >> $GITHUB_ENV
+          echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
+
+      - name: Download extension manager binary
+        uses: Knauf-Group/DCE-Tableau/.github/actions/download_extension@extensions
+        with:
+          url: ${{ env.url }}
+          target_path: ${{ env.target_path }}
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to ACR
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.acr }}.azurecr.io
+          username: ${{ env.acr }}
+          password: ${{ secrets.ACR_PASSWORD }}
+
+      - name: Build amd64 Docker image
+        run: |
+          docker buildx build \
+            --platform linux/amd64 \
+            -t "$IMAGE_NAME:$IMAGE_TAG" \
+            "$EXT_PATH" \
+            --load
+          
+          docker image inspect $IMAGE_NAME:$IMAGE_TAG --format '{{.Os}}/{{.Architecture}}'
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          format: 'table'
+          exit-code: '0'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+
+      - name: Push Docker image
+        run: |
+          docker push "$IMAGE_NAME:$IMAGE_TAG"
