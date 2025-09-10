@@ -25,6 +25,7 @@ images:
     newTag: 1.0.0
 
 patches:
+  - target:
       kind: Ingress
       name: daas-infotopicss-extensions-private-ingress
     patch: |-
