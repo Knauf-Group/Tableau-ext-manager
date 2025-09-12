@@ -10,7 +10,7 @@ namespace: infotopics
 configMapGenerator:
   - name: daas-infotopic-cm
     files:
-      - config.yaml=config-map.yml
+      - config.yml=config-map.yml
 generatorOptions:
   disableNameSuffixHash: true 
 
