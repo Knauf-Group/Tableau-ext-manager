@@ -8,9 +8,9 @@ namespace: infotopics
 # namespace: default
 
 configMapGenerator:
-  - name: daas-infotopic-cm-extension-manager
+  - name: daas-infotopic-cm
     files:
-      - configuration.yaml=config-map-extension-manager.yml
+      - config.yaml=config-map.yml
 generatorOptions:
   disableNameSuffixHash: true 
 
