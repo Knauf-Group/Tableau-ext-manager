@@ -21,8 +21,8 @@ images:
     newTag: 3.5.1
   - name: acrfalconnppltweu001.azurecr.io/infotopics/extensions/hierarchy-filter-enterprise
     newTag: 1.15.12
-  # - name: acrfalconnppltweu001.azurecr.io/infotopics/extensions/extension-manager:1.0.0
-  #   newTag: 1.0.0
+  - name: acrfalconnppltweu001.azurecr.io/infotopics/extensions/extension-manager:1.0.0
+    newTag: 1.0.0
 
 # patches:
 #   - target:
