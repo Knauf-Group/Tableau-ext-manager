@@ -34,7 +34,7 @@ spec:
   tls:
   - hosts:
     - np.observability.knaufgroup.com
-    secretName: infotopics-server-tls
+    secretName: infotopics-secondary-server-tls
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -70,4 +70,4 @@ spec:
   tls:
   - hosts:
     - np.observability.knaufgroup.com
-    secretName: infotopics-server-tls
+    secretName: infotopics-secondary-server-tls
