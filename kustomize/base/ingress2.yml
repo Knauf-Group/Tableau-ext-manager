@@ -14,7 +14,7 @@ metadata:
   name: daas-infotopicss-extensions-private-ingress-st
 spec:
   rules:
-  - host: super-tables.np.observability.knaufgroup.com
+  - host: np.observability.knaufgroup.com
     http:
       paths:
       # - backend:
@@ -33,7 +33,7 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - super-tables.np.observability.knaufgroup.com
+    - np.observability.knaufgroup.com
     secretName: infotopics-server-tls
 ---
 apiVersion: networking.k8s.io/v1
@@ -50,7 +50,7 @@ metadata:
   name: daas-infotopicss-extensions-public-ingress-st
 spec:
   rules:
-  - host: super-tables.np.observability.knaufgroup.com
+  - host: np.observability.knaufgroup.com
     http:
       paths:
       # - backend:
@@ -69,5 +69,5 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - super-tables.np.observability.knaufgroup.com
+    - np.observability.knaufgroup.com
     secretName: infotopics-server-tls
