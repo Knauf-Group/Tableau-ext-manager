@@ -24,24 +24,24 @@ images:
   # - name: acrfalconnppltweu001.azurecr.io/infotopics/extensions/extension-manager:1.0.0
   #   newTag: 1.0.0
 
-patches:
-  - target:
-      kind: Ingress
-      name: daas-infotopicss-extensions-private-ingress
-    patch: |-
-      - op: replace
-        path: /spec/rules/0/host
-        value: np.falcon-security.knaufgroup.com
-      - op: replace
-        path: /spec/tls/0/hosts/0
-        value: np.falcon-security.knaufgroup.com
-  - target:
-      kind: Ingress
-      name: daas-infotopicss-extensions-public-ingress
-    patch: |-
-      - op: replace
-        path: /spec/rules/0/host
-        value: np.falcon-security.knaufgroup.com
-      - op: replace
-        path: /spec/tls/0/hosts/0
-        value: np.falcon-security.knaufgroup.com
+# patches:
+#   - target:
+#       kind: Ingress
+#       name: daas-infotopicss-extensions-private-ingress
+#     patch: |-
+#       - op: replace
+#         path: /spec/rules/0/host
+#         value: np.falcon-security.knaufgroup.com
+#       - op: replace
+#         path: /spec/tls/0/hosts/0
+#         value: np.falcon-security.knaufgroup.com
+#   - target:
+#       kind: Ingress
+#       name: daas-infotopicss-extensions-public-ingress
+#     patch: |-
+#       - op: replace
+#         path: /spec/rules/0/host
+#         value: np.falcon-security.knaufgroup.com
+#       - op: replace
+#         path: /spec/tls/0/hosts/0
+#         value: np.falcon-security.knaufgroup.com
