@@ -11,7 +11,7 @@ metadata:
     cert-manager.io/acme-challenge-type: http01
     cert-manager.io/cluster-issuer: letsencrypt-prod
     kubernetes.io/ingress.class: azure/application-gateway
-  name: daas-infotopicss-extensions-private-ingress
+  name: daas-infotopicss-extensions-private-ingress-st
 spec:
   rules:
   - host: super-tables.np.observability.knaufgroup.com
@@ -47,7 +47,7 @@ metadata:
     cert-manager.io/acme-challenge-type: http01
     cert-manager.io/cluster-issuer: letsencrypt-prod
     kubernetes.io/ingress.class: azure/application-gateway
-  name: daas-infotopicss-extensions-public-ingress
+  name: daas-infotopicss-extensions-public-ingress-st
 spec:
   rules:
   - host: super-tables.np.observability.knaufgroup.com
