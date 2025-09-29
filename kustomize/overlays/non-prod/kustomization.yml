@@ -28,7 +28,7 @@ images:
 patches:
   - target:
       kind: Ingress
-      name: daas-infotopicss-extensions-private-ingress
+      name: ingress-extensions-private
     patch: |-
       - op: replace
         path: /spec/rules/0/host
@@ -38,7 +38,7 @@ patches:
         value: np.falcon-security.knaufgroup.com
   - target:
       kind: Ingress
-      name: daas-infotopicss-extensions-public-ingress
+      name: ingress-extensions-public
     patch: |-
       - op: replace
         path: /spec/rules/0/host
