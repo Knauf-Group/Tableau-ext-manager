@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: daas-infortopics-ext-power-kpis
+  name: deployment-power-kpis
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: daas-infortopics-power-kpis
+      app: deployment-power-kpis
   template:
     metadata:
       labels:
-        app: daas-infortopics-power-kpis
+        app: deployment-power-kpis
     spec:
       containers:
       - image: acrfalconnppltweu001.azurecr.io/infotopics/extensions/power-kpis-enterprise:3.5.1
         imagePullPolicy: Always
-        name: daas-infortopics-power-kpis
+        name: deployment-power-kpis
         ports:
         - containerPort: 80
         volumeMounts:
@@ -25,7 +25,7 @@ spec:
       volumes:
         - name: config-volume
           configMap:
-            name: daas-infotopic-cm
+            name: cm-power-kpis
             items:
               - key: config.yml
                 path: config.yml
@@ -33,10 +33,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: daas-infortopics-ext-power-kpis-svc
+  name: svc-power-kpis
 spec:
   selector:
-    app: daas-infortopics-power-kpis
+    app: deployment-power-kpis
   ports:
     - protocol: TCP
       port: 80

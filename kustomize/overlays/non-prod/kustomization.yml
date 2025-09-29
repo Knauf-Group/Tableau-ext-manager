@@ -11,6 +11,12 @@ configMapGenerator:
   - name: cm-super-tables
     files:
       - config.yml=config_maps/super-tables.yml
+  - name: cm-power-kpis
+    files:
+      - config.yml=config_maps/power-kpis.yml
+  - name: cm-hierarchy-filter
+    files:
+      - config.yml=config_maps/hierarchy-filter.yml
   - name: cm-nginx
     files:
       - config.yml=config_maps/nginx.yml
