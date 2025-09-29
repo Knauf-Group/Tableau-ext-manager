@@ -13,7 +13,7 @@ configMapGenerator:
       - config.yml=extensions-config-map.yml
   - name: nginx-multi-ext-cm
     files:
-      - config.yml=nginx-config-map.yml
+      - default.conf=nginx-config-map.yml
 generatorOptions:
   disableNameSuffixHash: true 
 

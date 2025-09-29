@@ -25,7 +25,7 @@ spec:
       - name: nginx-config
         configMap:
           name: nginx-multi-ext-cm
-          subPath: config.yml
+          subPath: default.conf
 
 ---
 apiVersion: v1
