@@ -18,6 +18,14 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 80
+        volumeMounts:
+        - name: nginx-config
+          mountPath: /etc/nginx/conf.d/default.conf
+          subPath: default.conf
+      volumes:
+      - name: nginx-config
+        configMap:
+          name: nginx-multi-ext-cm
 
 ---
 apiVersion: v1
@@ -32,3 +40,31 @@ spec:
       port: 80
       targetPort: 80
   type: ClusterIP
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-multi-ext-cm
+data:
+  default.conf: |
+    server {
+        listen 80;
+        server_name _;
+
+        # Default root page for health probes
+        location / {
+            return 200 'OK';
+            add_header Content-Type text/plain;
+        }
+
+        # SuperTables extension
+        location /super-tables/ {
+            proxy_pass http://supertables-svc:80/;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            try_files $uri $uri/ /index.html;
+        }
+    }
