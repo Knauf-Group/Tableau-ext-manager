@@ -13,7 +13,7 @@ configMapGenerator:
       - config.yml=config_maps/super-tables.yml
   - name: cm-nginx
     files:
-      - config.yml=config_maps/nginx-config-map.yml
+      - config.yml=config_maps/nginx.yml
 generatorOptions:
   disableNameSuffixHash: true 
 
