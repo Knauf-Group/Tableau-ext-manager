@@ -8,10 +8,10 @@ namespace: infotopics
 # namespace: default
 
 configMapGenerator:
-  - name: infotopic-extensions-cm
+  - name: cm-extensions
     files:
       - config.yml=extensions-config-map.yml
-  - name: nginx-multi-ext-cm
+  - name: cm-nginx
     files:
       - default.conf=nginx-config-map.yml
 generatorOptions:

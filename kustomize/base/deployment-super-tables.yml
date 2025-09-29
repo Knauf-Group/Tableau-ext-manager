@@ -22,12 +22,10 @@ spec:
           - name: config-volume
             mountPath: /app/config.yml
             subPath: config.yml
-      # imagePullSecrets:
-      #   - name: acr-secret
       volumes:
         - name: config-volume
           configMap:
-            name: infotopic-extensions-cm
+            name: cm-extensions
             items:
               - key: config.yml
                 path: config.yml
