@@ -8,7 +8,7 @@ namespace: infotopics
 # namespace: default
 
 configMapGenerator:
-  - name: daas-infotopic-cm
+  - name: infotopic-extensions-cm
     files:
       - config.yml=config-map.yml
 generatorOptions:
