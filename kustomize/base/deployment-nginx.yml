@@ -52,7 +52,7 @@ data:
         listen 80;
         server_name _;
 
-        location /super-tables/ {
+        location /super-tables {
             proxy_pass http://infotopics-ext-super-tables-svc:80/;
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
@@ -62,7 +62,7 @@ data:
         }
 
         location / {
-            return 200 'OK - fine';
+            return 200 'OK';
             add_header Content-Type text/plain;
         }
     }
