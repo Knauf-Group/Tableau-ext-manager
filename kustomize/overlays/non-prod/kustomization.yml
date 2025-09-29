@@ -24,6 +24,8 @@ images:
     newTag: 3.5.1
   - name: acrfalconnppltweu001.azurecr.io/infotopics/extensions/hierarchy-filter-enterprise
     newTag: 1.15.12
+  - name: acrfalconnppltweu001.azurecr.io/np-plt/nginx
+    newTag: 1.29
 
 patches:
   - target:
