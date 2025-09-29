@@ -28,7 +28,7 @@ spec:
           service:
             name: daas-infotopics-ext-super-tables-svc
             port:
-              number: 80
+              number: 8083
         path: /super-tables
         pathType: Prefix
   tls:
@@ -64,7 +64,7 @@ spec:
           service:
             name: daas-infotopics-ext-super-tables-svc
             port:
-              number: 80
+              number: 8083
         path: /super-tables
         pathType: Prefix
   tls:
