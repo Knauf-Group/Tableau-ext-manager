@@ -18,7 +18,7 @@ spec:
       paths:
       - backend:
           service:
-            name: nginx-svc
+            name: svc-nginx
             port:
               number: 80
         path: /
@@ -46,7 +46,7 @@ spec:
       paths:
       - backend:
           service:
-            name: nginx-svc
+            name: svc-nginx
             port:
               number: 80
         path: /
