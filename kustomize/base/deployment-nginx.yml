@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: acrfalconnppltweu001.azurecr.io/infotopics/np-plt/nginx:1.29
+        image: acrfalconnppltweu001.azurecr.io/np-plt/nginx:1.29
         imagePullPolicy: Always
         ports:
         - containerPort: 80
