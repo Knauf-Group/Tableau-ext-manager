@@ -7,7 +7,7 @@ metadata:
     appgw.ingress.kubernetes.io/ssl-redirect: "true"
     appgw.ingress.kubernetes.io/use-private-ip: "true"
     appgw.ingress.kubernetes.io/health-probe-path: "/super-tables"
-    appgw.ingress.kubernetes.io/health-probe-port: "8083"
+    appgw.ingress.kubernetes.io/health-probe-port: "80"
     appgw.ingress.kubernetes.io/health-probe-protocol: "http"
     appgw.ingress.kubernetes.io/waf-policy-for-path: /subscriptions/9e739869-eb3e-483b-83fb-88b4eeea9c08/resourceGroups/rg-falcon-np-plt-weu-001/providers/Microsoft.Network/applicationGatewayWebApplicationFirewallPolicies/waf-falcon-np-plt-weu-001
     cert-manager.io/acme-challenge-type: http01
@@ -19,18 +19,11 @@ spec:
   - host: np.observability.knaufgroup.com
     http:
       paths:
-      # - backend:
-      #     service:
-      #       name: daas-infotopics-ext-super-tables-svc
-      #       port:
-      #         number: 80
-      #   path: /super-tables
-      #   pathType: Prefix
       - backend:
           service:
             name: daas-infotopics-ext-super-tables-svc
             port:
-              number: 8083
+              number: 80
         path: /super-tables
         pathType: Prefix
   tls:
@@ -45,7 +38,7 @@ metadata:
     appgw.ingress.kubernetes.io/backend-protocol: http
     appgw.ingress.kubernetes.io/ssl-redirect: "true"
     appgw.ingress.kubernetes.io/health-probe-path: "/super-tables"
-    appgw.ingress.kubernetes.io/health-probe-port: "8083"
+    appgw.ingress.kubernetes.io/health-probe-port: "80"
     appgw.ingress.kubernetes.io/health-probe-protocol: "http"
     appgw.ingress.kubernetes.io/waf-policy-for-path: /subscriptions/9e739869-eb3e-483b-83fb-88b4eeea9c08/resourceGroups/rg-falcon-np-plt-weu-001/providers/Microsoft.Network/applicationGatewayWebApplicationFirewallPolicies/waf-falcon-np-plt-weu-001
     cert-manager.io/acme-challenge-type: http01
@@ -57,18 +50,11 @@ spec:
   - host: np.observability.knaufgroup.com
     http:
       paths:
-      # - backend:
-      #     service:
-      #       name: daas-infotopics-ext-super-tables-svc
-      #       port:
-      #         number: 80
-      #   path: /super-tables
-      #   pathType: Prefix
       - backend:
           service:
             name: daas-infotopics-ext-super-tables-svc
             port:
-              number: 8083
+              number: 80
         path: /super-tables
         pathType: Prefix
   tls:
