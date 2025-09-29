@@ -11,7 +11,7 @@ configMapGenerator:
   - name: infotopic-extensions-cm
     files:
       - config.yml=extensions-config-map.yml
-  - name: infotopic-extensions-cm
+  - name: nginx-multi-ext-cm
     files:
       - config.yml=nginx-config-map.yml
 generatorOptions:
