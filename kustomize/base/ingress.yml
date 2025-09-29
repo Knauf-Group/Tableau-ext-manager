@@ -21,7 +21,7 @@ spec:
             name: nginx-svc
             port:
               number: 80
-        path: /super-tables
+        path: /
         pathType: Prefix
   tls:
   - hosts:
@@ -49,7 +49,7 @@ spec:
             name: nginx-svc
             port:
               number: 80
-        path: /super-tables
+        path: /
         pathType: Prefix
   tls:
   - hosts:
