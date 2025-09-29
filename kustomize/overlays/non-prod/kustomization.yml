@@ -40,17 +40,17 @@ patches:
     patch: |-
       - op: replace
         path: /spec/rules/0/host
-        value: np.falcon-security.knaufgroup.com
+        value: np.infotopicsextentions.knaufgroup.com
       - op: replace
         path: /spec/tls/0/hosts/0
-        value: np.falcon-security.knaufgroup.com
+        value: np.infotopicsextentions.knaufgroup.com
   - target:
       kind: Ingress
       name: ingress-extensions-public
     patch: |-
       - op: replace
         path: /spec/rules/0/host
-        value: np.falcon-security.knaufgroup.com
+        value: np.infotopicsextentions.knaufgroup.com
       - op: replace
         path: /spec/tls/0/hosts/0
-        value: np.falcon-security.knaufgroup.com
+        value: np.infotopicsextentions.knaufgroup.com

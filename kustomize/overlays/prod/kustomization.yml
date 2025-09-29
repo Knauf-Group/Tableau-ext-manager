@@ -5,18 +5,52 @@ resources:
   - ../../base
 
 namespace: infotopics
+# namespace: default
 
 configMapGenerator:
-  - name: daas-infotopic-cm
+  - name: cm-super-tables
     files:
-      - config.yml
+      - config.yml=config_maps/super-tables.yml
+  - name: cm-power-kpis
+    files:
+      - config.yml=config_maps/power-kpis.yml
+  - name: cm-hierarchy-filter
+    files:
+      - config.yml=config_maps/hierarchy-filter.yml
+  - name: cm-nginx
+    files:
+      - config.yml=config_maps/nginx.yml
 generatorOptions:
   disableNameSuffixHash: true 
 
 images:
   - name: acrfalconnppltweu001.azurecr.io/infotopics/extensions/super-tables-enterprise
-    newTag: 5.5.0
+    newTag: "5.5.0"
   - name: acrfalconnppltweu001.azurecr.io/infotopics/extensions/power-kpis-enterprise
-    newTag: 3.5.1
+    newTag: "3.5.1"
   - name: acrfalconnppltweu001.azurecr.io/infotopics/extensions/hierarchy-filter-enterprise
-    newTag: 1.15.12
+    newTag: "1.15.12"
+  - name: acrfalconnppltweu001.azurecr.io/np-plt/nginx
+    newTag: "1.29"
+
+patches:
+  - target:
+      kind: Ingress
+      name: ingress-extensions-private
+    patch: |-
+      - op: replace
+        path: /spec/rules/0/host
+        value: infotopicsextentions.knaufgroup.com
+      - op: replace
+        path: /spec/tls/0/hosts/0
+        value: infotopicsextentions.knaufgroup.com
+  - target:
+      kind: Ingress
+      name: ingress-extensions-public
+    patch: |-
+      - op: replace
+        path: /spec/rules/0/host
+        value: infotopicsextentions.knaufgroup.com
+      - op: replace
+        path: /spec/tls/0/hosts/0
+        value: infotopicsextentions.knaufgroup.com
