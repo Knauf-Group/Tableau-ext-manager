@@ -10,7 +10,7 @@ metadata:
     cert-manager.io/acme-challenge-type: http01
     cert-manager.io/cluster-issuer: letsencrypt-prod
     kubernetes.io/ingress.class: azure/application-gateway
-  name: daas-infotopicss-extensions-private-ingress-st
+  name: daas-infotopicss-extensions-private-ingress
 spec:
   rules:
   - host:
@@ -38,7 +38,7 @@ metadata:
     cert-manager.io/acme-challenge-type: http01
     cert-manager.io/cluster-issuer: letsencrypt-prod
     kubernetes.io/ingress.class: azure/application-gateway
-  name: daas-infotopicss-extensions-public-ingress-st
+  name: daas-infotopicss-extensions-private-ingress
 spec:
   rules:
   - host: 
