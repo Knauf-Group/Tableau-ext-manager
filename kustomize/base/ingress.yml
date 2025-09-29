@@ -18,7 +18,7 @@ spec:
       paths:
       - backend:
           service:
-            name: daas-infotopics-ext-super-tables-svc
+            name: nginx-svc
             port:
               number: 80
         path: /super-tables
@@ -46,7 +46,7 @@ spec:
       paths:
       - backend:
           service:
-            name: daas-infotopics-ext-super-tables-svc
+            name: nginx-svc
             port:
               number: 80
         path: /super-tables
