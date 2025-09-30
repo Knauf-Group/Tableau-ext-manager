@@ -1,6 +1,6 @@
 server:
-  host: np.observability.knaufgroup.com
-  base: /super-tables
+  host: np.observability.knaufgroup.com/super-tables
+  base: /
 
 license:
   file: ./license.lic
