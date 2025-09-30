@@ -17,13 +17,6 @@ spec:
   - host: np.observability.knaufgroup.com
     http:
       paths:
-      # - backend:
-      #     service:
-      #       name: daas-infotopics-extension-manager-svc
-      #       port:
-      #         number: 80
-      #   path: /extmanager
-      #   pathType: Prefix
       - backend:
           service:
             name: daas-infotopics-extension-manager-svc
@@ -53,13 +46,6 @@ spec:
   - host: np.observability.knaufgroup.com
     http:
       paths:
-      # - backend:
-      #     service:
-      #       name: daas-infotopics-extension-manager-svc
-      #       port:
-      #         number: 80
-      #   path: /extmanager
-      #   pathType: Prefix
       - backend:
           service:
             name: daas-infotopics-extension-manager-svc

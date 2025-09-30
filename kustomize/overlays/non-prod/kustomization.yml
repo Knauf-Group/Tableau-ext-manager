@@ -11,12 +11,12 @@ configMapGenerator:
   - name: cm-super-tables
     files:
       - config.yml=config_maps/super-tables.yml
-  - name: cm-power-kpis
-    files:
-      - config.yml=config_maps/power-kpis.yml
-  - name: cm-hierarchy-filter
-    files:
-      - config.yml=config_maps/hierarchy-filter.yml
+  # - name: cm-power-kpis
+  #   files:
+  #     - config.yml=config_maps/power-kpis.yml
+  # - name: cm-hierarchy-filter
+  #   files:
+  #     - config.yml=config_maps/hierarchy-filter.yml
   - name: cm-nginx
     files:
       - config.yml=config_maps/nginx.yml
@@ -33,30 +33,30 @@ images:
   - name: acrfalconnppltweu001.azurecr.io/np-plt/nginx
     newTag: "1.29"
 
-# patches:
-#   - target:
-#       kind: Ingress
-#       name: ingress-extensions-private
-#     patch: |-
-#       - op: replace
-#         path: /spec/rules/0/host
-#         value: np.observability.knaufgroup.com
-#       - op: replace
-#         path: /spec/tls/0/hosts/0
-#         value: np.observability.knaufgroup.com
-#       - op: replace
-#         path: /spec/tls/0/secretName
-#         value: infotopics-server-tls
-#   - target:
-#       kind: Ingress
-#       name: ingress-extensions-public
-#     patch: |-
-#       - op: replace
-#         path: /spec/rules/0/host
-#         value: np.observability.knaufgroup.com
-#       - op: replace
-#         path: /spec/tls/0/hosts/0
-#         value: np.observability.knaufgroup.com
-#       - op: replace
-#         path: /spec/tls/0/secretName
-#         value: infotopics-server-tls
+patches:
+  - target:
+      kind: Ingress
+      name: ingress-extensions-private
+    patch: |-
+      - op: replace
+        path: /spec/rules/0/host
+        value: np.falcon-security.knaufgroup.com
+      - op: replace
+        path: /spec/tls/0/hosts/0
+        value: np.falcon-security.knaufgroup.com
+      - op: replace
+        path: /spec/tls/0/secretName
+        value: nfotopics-secondary-server-tls
+  - target:
+      kind: Ingress
+      name: ingress-extensions-public
+    patch: |-
+      - op: replace
+        path: /spec/rules/0/host
+        value: np.falcon-security.knaufgroup.com
+      - op: replace
+        path: /spec/tls/0/hosts/0
+        value: np.falcon-security.knaufgroup.com
+      - op: replace
+        path: /spec/tls/0/secretName
+        value: nfotopics-secondary-server-tls
