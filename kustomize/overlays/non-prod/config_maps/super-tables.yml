@@ -1,6 +1,7 @@
 server:
   host: 0.0.0.0:80
   base: /super-tables/
-
+external:
+  url: https://np.falcon-security.knaufgroup.com
 license:
   file: ./license.lic
