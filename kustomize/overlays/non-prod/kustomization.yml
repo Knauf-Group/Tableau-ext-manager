@@ -46,7 +46,7 @@ patches:
         value: np.falcon-security.knaufgroup.com
       - op: replace
         path: /spec/tls/0/secretName
-        value: nfotopics-secondary-server-tls
+        value: infotopics-secondary-server-tls
   - target:
       kind: Ingress
       name: ingress-extensions-public
@@ -59,4 +59,4 @@ patches:
         value: np.falcon-security.knaufgroup.com
       - op: replace
         path: /spec/tls/0/secretName
-        value: nfotopics-secondary-server-tls
+        value: infotopics-secondary-server-tls
