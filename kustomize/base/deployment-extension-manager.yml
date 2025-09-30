@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: daas-infotopics-extension-manager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: daas-infotopics-extension-manager
+  template:
+    metadata:
+      labels:
+        app: daas-infotopics-extension-manager
+    spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      containers:
+      - image: acrfalconnppltweu001.azurecr.io/infotopics/extensions/extension-manager:1.0.0
+        command: ["./aft-extensions-manager-linux"]
+        args:  ["--port", "38925"]
+        imagePullPolicy: Always
+        name: daas-infotopics-extension-manager
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 38925
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 38925
+          initialDelaySeconds: 10
+          periodSeconds: 20
+        ports:
+        - containerPort: 38925
+        volumeMounts:
+          - name: aft-ext-pv
+            mountPath: /app/AFT Extension Manager
+      # imagePullSecrets:
+      #   - name: acr-secret
+      volumes:
+        - name: aft-ext-pv
+          persistentVolumeClaim:
+            claimName: daas-infotopics-extension-manager-pvc
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: daas-infotopics-extension-manager-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: daas-infotopics-extension-manager-svc
+spec:
+  selector:
+    app: daas-infotopics-extension-manager
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 38925
+  type: ClusterIP
