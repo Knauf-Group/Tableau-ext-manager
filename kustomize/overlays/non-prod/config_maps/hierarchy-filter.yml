@@ -1,5 +1,5 @@
 server:
-  host: np.infotopicsextentions.knaufgroup.com
+  host: np.observability.knaufgroup.com
   base: /hierarchy-filter
 
 license:

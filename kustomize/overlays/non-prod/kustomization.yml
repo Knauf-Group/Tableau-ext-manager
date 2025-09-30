@@ -40,17 +40,23 @@ patches:
     patch: |-
       - op: replace
         path: /spec/rules/0/host
-        value: np.infotopicsextentions.knaufgroup.com
+        value: np.observability.knaufgroup.com
       - op: replace
         path: /spec/tls/0/hosts/0
-        value: np.infotopicsextentions.knaufgroup.com
+        value: np.observability.knaufgroup.com
+      - op: replace
+        path: /spec/tls/0/secretName
+        value: infotopics-server-tls
   - target:
       kind: Ingress
       name: ingress-extensions-public
     patch: |-
       - op: replace
         path: /spec/rules/0/host
-        value: np.infotopicsextentions.knaufgroup.com
+        value: np.observability.knaufgroup.com
       - op: replace
         path: /spec/tls/0/hosts/0
-        value: np.infotopicsextentions.knaufgroup.com
+        value: np.observability.knaufgroup.com
+      - op: replace
+        path: /spec/tls/0/secretName
+        value: infotopics-server-tls
