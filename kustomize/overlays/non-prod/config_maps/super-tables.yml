@@ -1,5 +1,5 @@
 server:
-  host: np.observability.knaufgroup.com/super-tables
+  host: 0.0.0.0
   base: /
 
 license:
