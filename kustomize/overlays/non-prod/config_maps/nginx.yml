@@ -3,24 +3,13 @@ server {
     server_name _;
 
     location /super-tables/ {
-        rewrite ^/super-tables/(trex/.*)$ /$1 break;
         rewrite ^/super-tables/(.*)$ /$1 break;
-
         proxy_pass http://svc-super-tables.infotopics.svc.cluster.local:80/;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
     }
-
-    # location /super-tables/ {
-    #     rewrite ^/super-tables/(.*)$ /$1 break;
-    #     proxy_pass http://svc-super-tables.infotopics.svc.cluster.local:80/;
-    #     proxy_set_header Host $host;
-    #     proxy_set_header X-Real-IP $remote_addr;
-    #     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    #     proxy_set_header X-Forwarded-Proto $scheme;
-    # }
 
     # location /super-tables/trex/ {
     #     rewrite ^/super-tables/trex/(.*)$ /trex/$1 break;
