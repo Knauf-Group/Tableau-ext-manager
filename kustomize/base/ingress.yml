@@ -27,6 +27,7 @@ spec:
   - hosts:
     - 
     secretName: 
+      - 
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -55,3 +56,4 @@ spec:
   - hosts:
     - 
     secretName: 
+      - 

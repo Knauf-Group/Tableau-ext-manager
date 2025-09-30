@@ -45,7 +45,7 @@ patches:
         path: /spec/tls/0/hosts/0
         value: np.observability.knaufgroup.com
       - op: replace
-        path: /spec/tls/0/secretName
+        path: /spec/tls/0/secretName/0
         value: infotopics-server-tls
   - target:
       kind: Ingress
@@ -59,4 +59,4 @@ patches:
         value: np.observability.knaufgroup.com
       - op: replace
         path: /spec/tls/0/secretName
-        value: infotopics-server-tls
+        value: infotopics-server-tls/0
