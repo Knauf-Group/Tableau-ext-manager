@@ -1,5 +1,10 @@
 server:
-  host: 0.0.0.0/super-tables:80
+  host: 0.0.0.0:80
   base: /
+
+trex:
+  ## Fixed host for the generated trex file, needed when using a reversed proxy.
+  host: 'np.falcon-security.knaufgroup.com/super-tables
+
 license:
   file: ./license.lic
