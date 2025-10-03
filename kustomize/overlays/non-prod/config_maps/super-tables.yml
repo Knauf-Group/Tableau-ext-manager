@@ -1,5 +1,5 @@
 server:
-  host: https://np.falcon-security.knaufgroup.com
+  host: np.falcon-security.knaufgroup.com:80
   base: /super-tables
 
 trex:
