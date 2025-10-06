@@ -3,8 +3,8 @@ server:
   base: /
 
 trex:
-  host: np.falcon-security.knaufgroup.com/super-tables:443
-  base: /
+  host: https://np.falcon-security.knaufgroup.com
+  base: /super-tables
 
 license:
   file: ./license.lic
