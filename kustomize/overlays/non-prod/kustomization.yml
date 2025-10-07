@@ -21,7 +21,7 @@ images:
 patches:
   - target:
       kind: Ingress
-      name: ingress-extensions-private
+      name: extensions-manager-private-ingress
     patch: |-
       - op: replace
         path: /spec/rules/0/host
@@ -34,7 +34,7 @@ patches:
         value: infotopics-server-tls
   - target:
       kind: Ingress
-      name: ingress-extensions-public
+      name: extensions-manager-public-ingress
     patch: |-
       - op: replace
         path: /spec/rules/0/host
