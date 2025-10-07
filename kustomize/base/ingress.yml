@@ -23,27 +23,6 @@ spec:
               number: 80
         path: /
         pathType: Prefix
-      - backend:
-          service:
-            name: infotopics-extension-manager-svc
-            port:
-              number: 8083
-        path: /
-        pathType: Prefix
-      - backend:
-          service:
-            name: infotopics-extension-manager-svc
-            port:
-              number: 8085
-        path: /
-        pathType: Prefix
-      - backend:
-          service:
-            name: infotopics-extension-manager-svc
-            port:
-              number: 8094
-        path: /
-        pathType: Prefix
   tls:
   - hosts:
     - 
@@ -70,27 +49,6 @@ spec:
             name: infotopics-extension-manager-svc
             port:
               number: 80
-        path: /
-        pathType: Prefix
-      - backend:
-          service:
-            name: infotopics-extension-manager-svc
-            port:
-              number: 8083
-        path: /
-        pathType: Prefix
-      - backend:
-          service:
-            name: infotopics-extension-manager-svc
-            port:
-              number: 8085
-        path: /
-        pathType: Prefix
-      - backend:
-          service:
-            name: infotopics-extension-manager-svc
-            port:
-              number: 8094
         path: /
         pathType: Prefix
   tls:
