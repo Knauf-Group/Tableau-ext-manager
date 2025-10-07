@@ -1,9 +1,4 @@
 resources:
 - namespace.yml
 - deployment-extension-manager.yml
-- ingress2.yml
-- deployment-nginx.yml
-- deployment-super-tables.yml
-# - deployment-power-kpis.yml
-# - deployment-hierarchy-filter.yml
 - ingress.yml

@@ -10,7 +10,7 @@ metadata:
     cert-manager.io/acme-challenge-type: http01
     cert-manager.io/cluster-issuer: letsencrypt-prod
     kubernetes.io/ingress.class: azure/application-gateway
-  name: ingress-extensions-private
+  name: extensions-manager-private-ingress
 spec:
   rules:
   - host:
@@ -18,7 +18,7 @@ spec:
       paths:
       - backend:
           service:
-            name: svc-nginx
+            name: infotopics-extension-manager-svc
             port:
               number: 80
         path: /
@@ -26,7 +26,7 @@ spec:
   tls:
   - hosts:
     - 
-    secretName: 
+    secretName:
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -38,7 +38,7 @@ metadata:
     cert-manager.io/acme-challenge-type: http01
     cert-manager.io/cluster-issuer: letsencrypt-prod
     kubernetes.io/ingress.class: azure/application-gateway
-  name: ingress-extensions-public
+  name: extensions-manager-public-ingress
 spec:
   rules:
   - host: 
@@ -46,7 +46,7 @@ spec:
       paths:
       - backend:
           service:
-            name: svc-nginx
+            name: infotopics-extension-manager-svc
             port:
               number: 80
         path: /
@@ -54,4 +54,4 @@ spec:
   tls:
   - hosts:
     - 
-    secretName: 
+    secretName:

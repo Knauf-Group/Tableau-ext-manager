@@ -11,15 +11,6 @@ configMapGenerator:
   - name: cm-super-tables
     files:
       - config.yml=config_maps/super-tables.yml
-  # - name: cm-power-kpis
-  #   files:
-  #     - config.yml=config_maps/power-kpis.yml
-  # - name: cm-hierarchy-filter
-  #   files:
-  #     - config.yml=config_maps/hierarchy-filter.yml
-  - name: cm-nginx
-    files:
-      - config.yml=config_maps/nginx.yml
 generatorOptions:
   disableNameSuffixHash: true 
 
@@ -30,8 +21,6 @@ images:
     newTag: "3.5.1"
   - name: acrfalconnppltweu001.azurecr.io/infotopics/extensions/hierarchy-filter-enterprise
     newTag: "1.15.12"
-  - name: acrfalconnppltweu001.azurecr.io/np-plt/nginx
-    newTag: "1.29"
 
 patches:
   - target:
@@ -46,7 +35,7 @@ patches:
         value: np.falcon-security.knaufgroup.com
       - op: replace
         path: /spec/tls/0/secretName
-        value: infotopics-secondary-server-tls
+        value: infotopics-server-tls
   - target:
       kind: Ingress
       name: ingress-extensions-public
@@ -59,4 +48,4 @@ patches:
         value: np.falcon-security.knaufgroup.com
       - op: replace
         path: /spec/tls/0/secretName
-        value: infotopics-secondary-server-tls
+        value: infotopics-server-tls

@@ -1,6 +1,0 @@
-server:
-  host: np.observability.knaufgroup.com
-  base: /power-kpis
-
-license:
-  file: ./license.lic

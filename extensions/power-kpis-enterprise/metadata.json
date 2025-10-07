@@ -1,6 +1,0 @@
-{
-  "version": "3.5.1",
-  "os": "linux",
-  "url": "https://github.com/Knauf-Group/DCE-Tableau/releases/download/3.5.1/power-kpis-linux",
-  "target_path": "extensions/power-kpis-enterprise/app/power-kpis-linux"
-}
