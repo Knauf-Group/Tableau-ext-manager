@@ -13,7 +13,7 @@ metadata:
   name: extensions-manager-private-ingress
 spec:
   rules:
-  - host:
+  - host: 
     http:
       paths:
       - backend:
