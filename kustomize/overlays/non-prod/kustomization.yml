@@ -16,7 +16,7 @@ generatorOptions:
 
 images:
   - name: acrfalconnppltweu001.azurecr.io/infotopics/extensions/extension-manager
-    newTag: "1.0.0"
+    newTag: "1.4"
 
 patches:
   - target:
