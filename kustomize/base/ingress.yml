@@ -26,7 +26,7 @@ spec:
           service:
             name: infotopics-extension-manager-svc
             port:
-              number: 80
+              number: 8083
         path: /super-tables
         pathType: Prefix
   tls:
@@ -61,8 +61,8 @@ spec:
           service:
             name: infotopics-extension-manager-svc
             port:
-              number: 80
-        path: /super-tables
+              number: 8083
+        path: /
   tls:
   - hosts:
     - 
