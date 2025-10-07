@@ -22,12 +22,14 @@ spec:
             port:
               number: 80
         path: /
+        pathType: Prefix
       - backend:
           service:
             name: infotopics-extension-manager-svc
             port:
               number: 8083
         path: /
+        pathType: Prefix
       - backend:
           service:
             name: infotopics-extension-manager-svc
@@ -76,6 +78,7 @@ spec:
             port:
               number: 8083
         path: /
+        pathType: Prefix
       - backend:
           service:
             name: infotopics-extension-manager-svc
