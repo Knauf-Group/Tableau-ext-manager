@@ -27,7 +27,20 @@ spec:
             name: infotopics-extension-manager-svc
             port:
               number: 8083
-        path: /super-tables
+        path: /
+      - backend:
+          service:
+            name: infotopics-extension-manager-svc
+            port:
+              number: 8085
+        path: /
+        pathType: Prefix
+      - backend:
+          service:
+            name: infotopics-extension-manager-svc
+            port:
+              number: 8094
+        path: /
         pathType: Prefix
   tls:
   - hosts:
@@ -63,6 +76,20 @@ spec:
             port:
               number: 8083
         path: /
+      - backend:
+          service:
+            name: infotopics-extension-manager-svc
+            port:
+              number: 8085
+        path: /
+        pathType: Prefix
+      - backend:
+          service:
+            name: infotopics-extension-manager-svc
+            port:
+              number: 8094
+        path: /
+        pathType: Prefix
   tls:
   - hosts:
     - 
