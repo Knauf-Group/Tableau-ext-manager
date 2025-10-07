@@ -8,9 +8,9 @@ namespace: infotopics
 # namespace: default
 
 configMapGenerator:
-  - name: cm-super-tables
+  - name: cm-extensiom-manager
     files:
-      - config.yml=config_maps/super-tables.yml
+      - config.yml=config_maps/extensiom-manager.yml
 generatorOptions:
   disableNameSuffixHash: true 
 
