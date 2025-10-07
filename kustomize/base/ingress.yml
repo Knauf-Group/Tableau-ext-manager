@@ -22,6 +22,12 @@ spec:
             port:
               number: 80
         path: /
+      - backend:
+          service:
+            name: infotopics-extension-manager-svc
+            port:
+              number: 80
+        path: /super-tables
         pathType: Prefix
   tls:
   - hosts:
@@ -51,6 +57,12 @@ spec:
               number: 80
         path: /
         pathType: Prefix
+      - backend:
+          service:
+            name: infotopics-extension-manager-svc
+            port:
+              number: 80
+        path: /super-tables
   tls:
   - hosts:
     - 
