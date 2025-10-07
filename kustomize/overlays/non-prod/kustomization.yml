@@ -17,6 +17,9 @@ generatorOptions:
 images:
   - name: acrfalconnppltweu001.azurecr.io/infotopics/extensions/extension-manager
     newTag: "1.4"
+  - name: nginx
+    newName: acrfalcondev.azurecr.io/np-plt/nginx
+    newTag: "1.29"
 
 patches:
   - target:

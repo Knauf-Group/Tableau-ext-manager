@@ -2,3 +2,7 @@ resources:
 - namespace.yml
 - deployment-extension-manager.yml
 - ingress.yml
+
+images:
+  - name: nginx
+    newTag: "latest"

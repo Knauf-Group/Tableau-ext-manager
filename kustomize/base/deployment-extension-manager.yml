@@ -69,3 +69,30 @@ spec:
       port: 80
       targetPort: 38925
   type: ClusterIP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: upgrader-extension-manager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: upgrader-extension-manager
+  template:
+    metadata:
+      labels:
+        app: upgrader-extension-manager
+    spec:
+      containers:
+      - image: nginx:latest
+        imagePullPolicy: Always
+        name: upgrader-extension-manager
+        volumeMounts:
+          - name: aft-ext-pv
+            mountPath: /app/AFT Extension Manager
+      volumes:
+        - name: aft-ext-pv
+          persistentVolumeClaim:
+            claimName: infotopics-extension-manager-pvc
