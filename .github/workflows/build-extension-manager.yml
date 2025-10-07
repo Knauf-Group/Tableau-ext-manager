@@ -23,7 +23,7 @@ jobs:
       - name: Set vars
         run: |
           EXT_NAME="${{ matrix.extension }}"
-          EXT_PATH="extensions/${{ matrix.extension }}"
+          EXT_PATH="${{ matrix.extension }}"
 
           VERSION=$(jq -r '.version' "$EXT_PATH/metadata.json")
           OS=$(jq -r '.os' "$EXT_PATH/metadata.json")
