@@ -12,6 +12,16 @@ spec:
       labels:
         app: infotopics-extension-manager
     spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - infotopics-extension-manager
+              topologyKey: "kubernetes.io/hostname"
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
@@ -36,6 +46,43 @@ spec:
           periodSeconds: 20
         ports:
         - containerPort: 38925
+        volumeMounts:
+          - name: aft-ext-pv
+            mountPath: /app/AFT Extension Manager
+      volumes:
+        - name: aft-ext-pv
+          persistentVolumeClaim:
+            claimName: infotopics-extension-manager-pvc
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: upgrader-extension-manager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: upgrader-extension-manager
+  template:
+    metadata:
+      labels:
+        app: upgrader-extension-manager
+    spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - infotopics-extension-manager
+              topologyKey: "kubernetes.io/hostname"
+      containers:
+      - image: nginx:latest
+        imagePullPolicy: Always
+        name: upgrader-extension-manager
         volumeMounts:
           - name: aft-ext-pv
             mountPath: /app/AFT Extension Manager
@@ -70,29 +117,3 @@ spec:
       targetPort: 38925
   type: ClusterIP
 
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: upgrader-extension-manager
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: upgrader-extension-manager
-  template:
-    metadata:
-      labels:
-        app: upgrader-extension-manager
-    spec:
-      containers:
-      - image: nginx:latest
-        imagePullPolicy: Always
-        name: upgrader-extension-manager
-        volumeMounts:
-          - name: aft-ext-pv
-            mountPath: /app/AFT Extension Manager
-      volumes:
-        - name: aft-ext-pv
-          persistentVolumeClaim:
-            claimName: infotopics-extension-manager-pvc
