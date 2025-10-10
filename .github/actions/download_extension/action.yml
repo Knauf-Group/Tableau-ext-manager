@@ -1,0 +1,25 @@
+name: 'Download extension'
+description: 'Download extension'
+inputs:
+  url:
+    description: "url"
+    required: true
+  target_path:
+    description: "target_path"
+    required: true
+  token:
+    description: "GitHub token"
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Parse JSON and download extension
+      shell: sh
+      run: |
+        curl -L -H "Authorization: token ${{ inputs.token }}" \
+          -o "${{ inputs.target_path }}" "${{ inputs.url }}"
+
+        chmod +x "${{ inputs.target_path }}"
+
+        ls -la "$(dirname "${{ inputs.target_path }}")"

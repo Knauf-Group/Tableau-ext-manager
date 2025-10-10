@@ -1,0 +1,6 @@
+{
+  "version": "1.4",
+  "os": "linux",
+  "url": "https://github.com/Knauf-Group/DCE-Tableau/releases/download/1.4/aft-extensions-manager-linux",
+  "target_path": "extension-manager/aft-extensions-manager-linux"
+}
