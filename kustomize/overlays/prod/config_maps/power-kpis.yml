@@ -1,6 +1,0 @@
-server:
-  host: infotopicsextentions.knaufgroup.com
-  base: /power-kpis
-
-license:
-  file: ./license.lic

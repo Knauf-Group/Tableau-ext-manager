@@ -1,6 +1,0 @@
-server:
-  host: infotopicsextentions.knaufgroup.com
-  base: /super-tables
-
-license:
-  file: ./license.lic

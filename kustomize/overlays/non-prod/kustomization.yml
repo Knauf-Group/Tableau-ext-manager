@@ -7,13 +7,6 @@ resources:
 namespace: infotopics
 # namespace: default
 
-configMapGenerator:
-  - name: cm-extensiom-manager
-    files:
-      - config.yml=config_maps/extensiom-manager.yml
-generatorOptions:
-  disableNameSuffixHash: true 
-
 images:
   - name: acrfalconnppltweu001.azurecr.io/infotopics/extensions/extension-manager
     newTag: "1.4"

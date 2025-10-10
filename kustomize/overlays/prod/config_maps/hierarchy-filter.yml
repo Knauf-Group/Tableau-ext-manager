@@ -1,6 +1,0 @@
-server:
-  host: infotopicsextentions.knaufgroup.com
-  base: /hierarchy-filter
-
-license:
-  file: ./license.lic
