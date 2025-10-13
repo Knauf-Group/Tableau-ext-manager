@@ -16,11 +16,11 @@ kubectl -n infotopics scale deployment upgrader-extension-manager --replicas=1
 - Go to …/AFT Extension Manager/extensions and delete the relevant product folder
 
 ```bash
-POD_NAME=$(kubectl get pods --no-headers -o custom-columns=":metadata.name" | grep upgrader-extension-manager)
+POD_NAME=$(kubectl get pods -n infotopics --no-headers -o custom-columns=":metadata.name" | grep upgrader-extension-manager)
 
 kubectl -n infotopics exec -it $POD_NAME --replicas=1 --bash
 
-cd AFT Extension Manager/extensions 
+cd app/AFT Extension Manager/extensions 
 rm -rf << Extension directory >>
 exit
 ```
