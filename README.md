@@ -2,6 +2,8 @@
 
 In order to update or upgrade your installation while offline, follow these steps:
 
+- Download the updated version of the product from the AFT Company Portal: https://my-appsfortableau.infotopics.com/
+
 - Turn off the server in the ExtensionsManager
 
 ```bash
@@ -32,8 +34,6 @@ kubectl -n infotopics scale deployment upgrader-extension-manager --replicas=0
 
 kubectl -n infotopics scale deployment infotopics-extension-manager --replicas=1
 ```
-
-- Download the updated version of the product from the AFT Company Portal: https://my-appsfortableau.infotopics.com/
 
 - Go to “Manual product installation” and drag in the .zip file
 
