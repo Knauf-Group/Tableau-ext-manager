@@ -25,9 +25,9 @@ patches:
       - op: replace
         path: /spec/tls/0/hosts/0
         value: np.infotopicsextension.knaufgroup.com
-      # - op: replace
-      #   path: /spec/tls/0/secretName
-      #   value: infotopics-secondary-server-tls
+      - op: replace
+        path: /spec/tls/0/secretName
+        value: infotopics-np-domain
   - target:
       kind: Ingress
       name: extensions-manager-public-ingress
@@ -38,6 +38,6 @@ patches:
       - op: replace
         path: /spec/tls/0/hosts/0
         value: np.infotopicsextension.knaufgroup.com
-      # - op: replace
-      #   path: /spec/tls/0/secretName
-      #   value: infotopics-secondary-server-tls
+      - op: replace
+        path: /spec/tls/0/secretName
+        value: infotopics-np-domain
