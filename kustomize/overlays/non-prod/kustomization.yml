@@ -21,23 +21,23 @@ patches:
     patch: |-
       - op: replace
         path: /spec/rules/0/host
-        value: np.falcon-security.knaufgroup.com
+        value: np.infotopicsextension.knaufgroup.com
       - op: replace
         path: /spec/tls/0/hosts/0
-        value: np.falcon-security.knaufgroup.com
-      - op: replace
-        path: /spec/tls/0/secretName
-        value: infotopics-secondary-server-tls
+        value: np.infotopicsextension.knaufgroup.com
+      # - op: replace
+      #   path: /spec/tls/0/secretName
+      #   value: infotopics-secondary-server-tls
   - target:
       kind: Ingress
       name: extensions-manager-public-ingress
     patch: |-
       - op: replace
         path: /spec/rules/0/host
-        value: np.falcon-security.knaufgroup.com
+        value: np.infotopicsextension.knaufgroup.com
       - op: replace
         path: /spec/tls/0/hosts/0
-        value: np.falcon-security.knaufgroup.com
-      - op: replace
-        path: /spec/tls/0/secretName
-        value: infotopics-secondary-server-tls
+        value: np.infotopicsextension.knaufgroup.com
+      # - op: replace
+      #   path: /spec/tls/0/secretName
+      #   value: infotopics-secondary-server-tls
