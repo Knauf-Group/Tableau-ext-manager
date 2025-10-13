@@ -42,7 +42,7 @@ jobs:
           echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
 
       - name: Download extension manager binary
-        uses: Knauf-Group/DCE-Tableau/.github/actions/download_extension@extensions
+        uses: Knauf-Group/DCE-Tableau/.github/actions/download_extension@main
         with:
           url: ${{ env.url }}
           target_path: ${{ env.target_path }}
