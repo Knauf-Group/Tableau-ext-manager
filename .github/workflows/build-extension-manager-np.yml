@@ -1,4 +1,4 @@
-name: Build Extensions Manager
+name: NP - uild Extensions Manager
 
 on:
   workflow_dispatch:
@@ -56,7 +56,7 @@ jobs:
         with:
           registry: ${{ env.acr }}.azurecr.io
           username: ${{ env.acr }}
-          password: ${{ secrets.ACR_PASSWORD }}
+          password: ${{ secrets.NP_PLT_ACR_PASSWORD }}
 
       - name: Build amd64 Docker image
         run: |
@@ -79,5 +79,6 @@ jobs:
           severity: 'CRITICAL,HIGH'
 
       - name: Push Docker image
+        if: github.ref == 'refs/heads/main'
         run: |
           docker push "$IMAGE_NAME:$IMAGE_TAG"
