@@ -1,4 +1,4 @@
-name: Build Extensions Manager
+name: P - Build Extensions Manager
 
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ on:
       - ".github/workflows/build-extension-manager.yml"
 
 env:
-  acr: acrfalconnppltweu001
+  acr: acrfalconppltweu001
 
 jobs:
   build:
@@ -56,7 +56,7 @@ jobs:
         with:
           registry: ${{ env.acr }}.azurecr.io
           username: ${{ env.acr }}
-          password: ${{ secrets.ACR_PASSWORD }}
+          password: ${{ secrets.P_PLT_ACR_PASSWORD }}
 
       - name: Build amd64 Docker image
         run: |
