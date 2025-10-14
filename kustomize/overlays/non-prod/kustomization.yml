@@ -27,7 +27,7 @@ patches:
         value: np.infotopicsextension.knaufgroup.com
       - op: replace
         path: /spec/tls/0/secretName
-        value: infotopics-np-domain
+        value: infotopics-np-domain-ltz4k
   - target:
       kind: Ingress
       name: extensions-manager-public-ingress
@@ -40,4 +40,4 @@ patches:
         value: np.infotopicsextension.knaufgroup.com
       - op: replace
         path: /spec/tls/0/secretName
-        value: infotopics-np-domain
+        value: infotopics-np-domain-ltz4k
