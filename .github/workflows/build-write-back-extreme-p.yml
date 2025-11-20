@@ -1,0 +1,55 @@
+name: P - Write Back Extreme
+
+on:
+  workflow_dispatch:
+  push:
+
+env:
+  acr: acrfalconppltweu001
+  IMAGE_TAG: 5.7.2
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set vars
+        run: |
+          IMAGE_NAME="${{ env.acr }}.azurecr.io/infotopics/extensions/writeback-extreme"
+
+          echo "IMAGE_NAME=$IMAGE_NAME" >> $GITHUB_ENV
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to ACR
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.acr }}.azurecr.io
+          username: ${{ env.acr }}
+          password: ${{ secrets.P_PLT_ACR_PASSWORD }}
+
+      - name: Build amd64 Docker image
+        run: |
+          docker pull ghcr.io/appsfortableau/writeback-extreme:${{ env.IMAGE_TAG }}
+          
+          docker tag ghcr.io/appsfortableau/writeback-extreme:${{ env.IMAGE_TAG }} ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+
+          docker image ls
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          format: 'table'
+          exit-code: '0'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+
+      - name: Push Docker image
+        if: github.ref == 'refs/heads/main'
+        run: |
+          docker push "$IMAGE_NAME:$IMAGE_TAG"
